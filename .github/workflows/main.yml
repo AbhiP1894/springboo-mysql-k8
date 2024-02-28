@@ -13,8 +13,11 @@ jobs:
       distribution: 'adopt'
       java-version: '11'
      
-   # - name: Build with Maven
-   #   run: mvn clean install
+   - name: Build with Maven
+     run: | 
+           mvn clean install 
+           $env: MAVEN_EXIT_CODE = $LASTEXITCODE
+           
 
    - name: Install Snyk CLI
      run: npm install -g snyk
