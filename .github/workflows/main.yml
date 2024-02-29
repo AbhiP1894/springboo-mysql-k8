@@ -18,6 +18,12 @@ jobs:
      # run: | 
      #       mvn clean install 
      #       $env: MAVEN_EXIT_CODE = $LASTEXITCODE
+
+   - name: Build Docker image
+     run: docker build -t spring-mysql-app .
+
+   - name: Snyk scan docker image
+     run: snyk container test spring-mysql-app 
            
 
    - name: Install Snyk CLI
