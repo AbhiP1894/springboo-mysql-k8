@@ -21,17 +21,19 @@ jobs:
 
    - name: Build Docker image
      run: docker build -t spring-mysql-app .
-
-   - name: Snyk scan docker image
-     run: snyk container test spring-mysql-app 
-           
-
+     
    - name: Install Snyk CLI
      run: npm install -g snyk
 
    - name: Snyk Authentication
      run: snyk auth ${{ secrets.SNYK_TOKEN }}
 
-   - name: Snyk Scan
+   - name: Snyk scan Dockerfile
+     run: snyk container test --file
+     
+   - name: Snyk scan docker image
+     run: snyk container test spring-mysql-app 
+           
+   - name: Snyk Scan  iac
     # run: snyk test --severity-threshold=low --ignore=VULN-ID-1,VULN-ID-2 --json > snyk-report.json
      run: snyk iac test --severity-threshold=low --report --org=cybage-poc   
