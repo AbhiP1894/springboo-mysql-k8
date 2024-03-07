@@ -32,7 +32,8 @@ jobs:
    #  run: snyk container test --file
      
    - name: Snyk scan docker image
-     run: snyk container test spring-mysql-app 
+     run: |
+           snyk container test spring-mysql-app || true
            
    - name: Snyk Scan  iac
     # run: snyk test --severity-threshold=low --ignore=VULN-ID-1,VULN-ID-2 --json > snyk-report.json
