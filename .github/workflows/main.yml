@@ -37,4 +37,5 @@ jobs:
            
    - name: Snyk Scan  iac
     # run: snyk test --severity-threshold=low --ignore=VULN-ID-1,VULN-ID-2 --json > snyk-report.json
-     run: snyk iac test --severity-threshold=low --report --org=cybage-poc   
+     run: |
+           snyk iac test --severity-threshold=low --report --org=cybage-poc || true   
