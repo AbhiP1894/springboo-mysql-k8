@@ -28,8 +28,8 @@ jobs:
    - name: Snyk Authentication
      run: snyk auth ${{ secrets.SNYK_TOKEN }}
 
-   - name: Snyk scan Dockerfile
-     run: snyk container test --file
+  # - name: Snyk scan Dockerfile
+   #  run: snyk container test --file
      
    - name: Snyk scan docker image
      run: snyk container test spring-mysql-app 
